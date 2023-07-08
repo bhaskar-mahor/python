@@ -1,0 +1,18 @@
+class Solution:
+    def __init__(self):
+        self.roman = [[1000, 'M'], [900, 'CM'], [500, 'D'], [400, 'CD'],[100, 'C'], [90, 'XC'], [50, 'L'], [40, 'XL'], [10, 'X'],[9,'IX'], [5, 'V'], [4, 'IV'], [1, 'I']]
+        
+    def intToRoman(self, num):
+        if num == 0:
+            return ''
+        roman_str = ''
+        current, mid = num, 0
+        while current != 0:
+            while current // self.roman[mid][0] == 0:
+                mid += 1
+            while current - self.roman[mid][0] >= 0:
+                current -= self.roman[mid][0]
+                roman_str += self.roman[mid][1]
+        return roman_str
+obj = Solution()
+print(obj.intToRoman(6))
